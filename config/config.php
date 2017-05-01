@@ -15,7 +15,7 @@
 
     //инициалзируем шаблонизатор Smarty
     ///
-    require ('../libraty/Smarty/libs/Smarty.class.php');
+    require ('../library/Smarty/libs/Smarty.class.php');
 
     $smarty = new Smarty();
 

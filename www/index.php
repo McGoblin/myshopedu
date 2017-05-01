@@ -9,5 +9,5 @@
     //Определяем какой контролер будет работать
     $actionName = isset($_GET['action'])?ucfirst($_GET['action']):'Index';
 
-    loadPage($controllerName, $actionName);
+    loadPage($smarty, $controllerName, $actionName);
 ?>

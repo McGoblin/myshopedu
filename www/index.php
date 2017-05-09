@@ -11,4 +11,5 @@
     $actionName = isset($_GET['action'])?ucfirst($_GET['action']):'Index';
 
     loadPage($smarty, $controllerName, $actionName);
-?>
+
+    dbDisconect();

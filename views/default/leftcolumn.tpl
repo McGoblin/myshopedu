@@ -5,9 +5,9 @@
 
 <div id="leftMenu">
 	<div class="menuCaption">Меню:</div>
-		пункт1<br />
-		пункт2<br />
-		пункт3<br />
+		{foreach $rsCategories as $item}
+			<a href="#">{$item['name']}</a><br>
+		{/foreach}
 </div>  
 
 </div>

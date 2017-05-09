@@ -1,5 +1,8 @@
 <?php
 
+//Подключение моделей
+include_once '../models/CategoriesModel.php'; //Модель для работы с категориями
+
 function testAction () {
     echo "IndexController.php > test";
 }

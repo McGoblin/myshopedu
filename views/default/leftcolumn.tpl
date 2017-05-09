@@ -6,10 +6,10 @@
 <div id="leftMenu">
 	<div class="menuCaption">Меню:</div>
 		{foreach $rsCategories as $item}
-			<a href="#">{$item['name']}</a><br>
+			<a href="/www/?controller=Category&id={$item['id']}">{$item['name']}</a><br>
 			{if isset($item['children'])}
 				{foreach $item['children'] as $children}
-					<a href="#">--{$children['name']}</a><br>
+					<a href="/www/?controller=Category&id={$children['id']}">--{$children['name']}</a><br>
 				{/foreach}
 			{/if}
 		{/foreach}

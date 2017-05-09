@@ -8,7 +8,11 @@ function testAction () {
 }
 
 function indexAction ($smarty) {
-    $smarty->assign('pageTitle', 'Главная страница');
+    $rsCategories = getAllMainCatsWithChildren();
+
+    $smarty->assign('pageTitle', 'Главная страница');// Передаем название страницы
+    $smarty->assign('rsCategories', $rsCategories); // Передаем категории сайта
+
     loadTemlate($smarty, 'header');
     loadTemlate($smarty, 'index');
     loadTemlate($smarty, 'footer');

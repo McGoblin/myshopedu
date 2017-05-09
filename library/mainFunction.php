@@ -31,3 +31,15 @@ function d($value = null, $die = 1){
 
     if($die) die;
 }
+
+/**
+ * @param $res полученые данные в результате запроса
+ * @return array данных полученых в результате запроса
+ */
+function createSmartyRsArray ($res){
+    $smartyRs = array();
+    while ($row = mysqli_fetch_assoc($res)){
+        $smartyRs[]=$row;
+    }
+    return $smartyRs;
+}

@@ -32,3 +32,17 @@ function getProductsByCat ($catID){
     $res = mysqli_query(dbConnect(),$sql);
     return createSmartyRsArray($res);
 }
+
+/**
+ * Функция выбириает информацию о продкуте по ID
+ * @param $itemId индификатор продкута
+ * @return array Информация о продукте
+ */
+function getProductsById($itemId){
+    $sql = "
+    SELECT * FROM `products`
+    WHERE `id` = '{$itemId}'";
+
+    $res = mysqli_query(dbConnect(),$sql);
+    return createSmartyRsArray($res);
+}

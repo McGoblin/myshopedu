@@ -9,11 +9,11 @@ function indexAction ($smarty){
 
     //Получаем информацию о продукте
     $rsProduct = getProductsById($itemId);
-
+//d($rsProduct);
     //Получаем списко категорий с дочерними обхектами
     $rsCategories = getAllMainCatsWithChildren();
 
-    $smarty->assign('pageTitle', 'Товары категории '.$rsCategory[0]['name']);// Передаем название страницы
+    $smarty->assign('pageTitle', $rsProduct[0]['name']);// Передаем название страницы
     $smarty->assign('rsCategories', $rsCategories); // Передаем категории сайта
     $smarty->assign("rsProduct", $rsProduct); //передаем информацию о продукте
 

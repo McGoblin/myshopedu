@@ -39,6 +39,7 @@ function getProductsByCat ($catID){
  * @return array Информация о продукте
  */
 function getProductsById($itemId){
+    $itemId=intval($itemId);
     $sql = "
     SELECT * FROM `products`
     WHERE `id` = '{$itemId}'";

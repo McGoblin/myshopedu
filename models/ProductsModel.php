@@ -15,7 +15,7 @@ function getLasProducts ($limit = null){
     if ($limit){
         $sql .= " LIMIT {$limit}";
     }
-    $res = mysqli_query(dbConect(),$sql);
+    $res = mysqli_query(dbConnect(),$sql);
     return createSmartyRsArray($res);
 }
 
@@ -29,6 +29,6 @@ function getProductsByCat ($catID){
             FROM `products`
             WHERE `category_id` = '{$catID}'";
 
-    $res = mysqli_query(dbConect(),$sql);
+    $res = mysqli_query(dbConnect(),$sql);
     return createSmartyRsArray($res);
 }

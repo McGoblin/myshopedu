@@ -12,4 +12,4 @@
 
     loadPage($smarty, $controllerName, $actionName);
 
-    dbDisconect();
+    dbDisconnect();

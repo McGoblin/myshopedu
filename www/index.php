@@ -1,5 +1,11 @@
 <?php
-    //Подключаем файлы
+    session_start();
+
+    if(!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
+    }
+
+//Подключаем файлы
     include_once '../config/config.php'; //Настройки
     include_once "../config/db.php"; //подключение к базе данных
     include_once '../library/mainFunction.php'; //файл основных функций

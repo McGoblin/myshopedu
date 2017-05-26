@@ -36,6 +36,11 @@ function getChildrenForCat($id){
     return createSmartyRsArray($res);
 }
 
+/**
+ * Получение категории по ID
+ * @param $catID индификатор категории
+ * @return array результат выборки
+ */
 function getCatById ($catID){
     $catID = intval($catID);
     $sql = "

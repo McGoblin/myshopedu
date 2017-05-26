@@ -12,7 +12,7 @@ function getAllMainCatsWithChildren () {
             FROM `categories`
             WHERE `parent_id` = 0';
 
-    $res = mysqli_query(dbConect(), $sql);
+    $res = mysqli_query(dbConnect(), $sql);
 
     $smartyres = array();
     while ($row = mysqli_fetch_assoc($res)){
@@ -32,7 +32,7 @@ function getAllMainCatsWithChildren () {
  */
 function getChildrenForCat($id){
     $sql = "SELECT * FROM `categories` WHERE `parent_id` = '{$id}'";
-    $res = mysqli_query(dbConect(), $sql);
+    $res = mysqli_query(dbConnect(), $sql);
     return createSmartyRsArray($res);
 }
 
@@ -42,6 +42,6 @@ function getCatById ($catID){
     SELECT * 
     FROM `categories`
     WHERE `id` = '$catID'";
-    $res = mysqli_query(dbConect(), $sql);
+    $res = mysqli_query(dbConnect(), $sql);
     return createSmartyRsArray($res);
 }

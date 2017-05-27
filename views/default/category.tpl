@@ -7,7 +7,7 @@
             <a href="/www/products/{$item['id']}/">
                 <img src="/www/images/products/{$item['image']}" width="100">
             </a><br>
-            <a href="/www/product/{$item['id']}/">
+            <a href="/www/products/{$item['id']}/">
                 {$item['name']}
             </a>
         </div>

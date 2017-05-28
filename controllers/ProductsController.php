@@ -13,6 +13,11 @@ function indexAction ($smarty){
     //Получаем списко категорий с дочерними обхектами
     $rsCategories = getAllMainCatsWithChildren();
 
+    $smarty->assign('itemInCart', 0);
+    if (in_array($itemId, $_SESSION['cart'])){
+        $smarty->assign('itemInCart', 1);
+    }
+
     $smarty->assign('pageTitle', $rsProduct[0]['name']);// Передаем название страницы
     $smarty->assign('rsCategories', $rsCategories); // Передаем категории сайта
     $smarty->assign("rsProduct", $rsProduct); //передаем информацию о продукте

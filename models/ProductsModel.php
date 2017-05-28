@@ -47,3 +47,17 @@ function getProductsById($itemId){
     $res = mysqli_query(dbConnect(),$sql);
     return createSmartyRsArray($res);
 }
+
+/**
+ * функция получает список всех продуктов по списку id
+ * @param $itemIds
+ * @return array
+ */
+function getProductsFromArray($itemIds) {
+    $str = implode($itemIds, ", ");
+    $sql = "SELECT *
+            FROM `products`
+            WHERE `id` IN ({$str});";
+    $res = mysqli_query(dbConnect(),$sql);
+    return createSmartyRsArray($res);
+}

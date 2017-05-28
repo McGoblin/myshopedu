@@ -43,3 +43,7 @@ function createSmartyRsArray ($res){
     }
     return $smartyRs;
 }
+
+function stringToSQL($param){
+    return htmlspecialchars(mysqli_escape_string($param));
+}

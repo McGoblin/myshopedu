@@ -15,7 +15,7 @@
 
     //Определяем какой контролер будет работать
     $actionName = isset($_GET['action'])?ucfirst($_GET['action']):'Index';
-
+    $smarty->assign('cartCntItems', count($_SESSION['cart']));
     loadPage($smarty, $controllerName, $actionName);
 
     dbDisconnect();

@@ -16,16 +16,16 @@
       {foreach $rsProducts as $item name=product}
         <tr>
           <td align="right"><style1>{$smarty.foreach.product.iteration}</style1></td>
-          <td align="right">
+          <td align="left">
             <style1><a href="/www/products/{$item['id']}/">{$item['name']}</a></style1>
           </td>
           </td>
-          <td align="right">
+          <td align="left">
             <input name="{$item['id']}" id="itemCnt_{$item['id']}" size="1"
             type="text" value="1" style="text-align: center;"
             onchange="convPrice('{$item["id"]}');"/>
           </td>
-          <td align="right">
+          <td align="left">
             <style1>
               <span id="itemPrice_{$item['id']}" value="{$item['price']}">{$item['price']}</span>
             </style1>

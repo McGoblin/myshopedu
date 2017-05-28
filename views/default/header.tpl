@@ -2,8 +2,8 @@
     <head>
         <title>{$pageTitle}</title>
 		<link rel="stylesheet" href="{$templateWebPath}css/main.css" type="text/css" />
-		<script src="/JS/jquery-3.2.1.slim.min.js" language="JavaScript"></script>
-		<script src="/JS/main.js" language="JavaScript"></script>
+		<script src="/www/JS/jquery-3.2.0.min.js" language="JavaScript"></script>
+		<script src="/www/JS/main.js" language="JavaScript"></script>
     </head>
 <body>
 	<div id="header">

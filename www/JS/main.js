@@ -16,8 +16,8 @@ function addtocart(itemID) {
         success: function (data) {
             if (data['success']){
                 $('#cartCntItems').html(data['cntItems']);
-                $('#addtocart_'+itemID).hide();
-                $('#removecart_'+itemID).show();
+                $('#addtocart_' + itemID).hide();
+                $('#removecart_' + itemID).show();
             }
         }
     });
@@ -32,7 +32,7 @@ function remfromcart(itemId) {
     $.ajax({
         type: 'POST',
         async: false,
-        url: "/www/cart/remfromcartAction/" + itemId + '/',
+        url: "/www/cart/remfromcart/" + itemId + '/',
         dataType: 'json',
         success: function(data) {
             if(data['success']){
@@ -42,6 +42,12 @@ function remfromcart(itemId) {
             }
         }
     });
+}
+
+
+
+function strToInt(sval) {
+    return Number(sval.replace(/,/g, ""));
 }
 /**
  * Функция расчитывает сумму, которую должен заплотить человек за товары
@@ -55,28 +61,43 @@ function convPrice(itemId) {
 
     $('#itemTotal').html(itemSum);
 }
+/**
+ * получение информации из формы в массив
+ * @param form
+ * @returns {{}}
+ */
+function getData(obj_form) {
+    var data = {};
+    $('input, textarea, select', obj_form).each(function() {
+        if (this.name && this.name != '') {
+            data[this.name] = this.value;
+            console.log('data[' + this.name + '] = ' + data[this.name]);
+        }
+    });
+    return data;
+}
 
-function regUser() {
-    var postData = {};
-    postData["email"] = $('#email').val();
-    postData["pass"]  = $('#pass').val();
-    postData["pass2"] = $('#pass2').val();
-    if (!postData["pass2"]) {
-        $('#passconf').show();
-        exit();
-    }
+
+/**
+ * регистрация новго пользователя
+ */
+function registerNewUser() {
+    var postData = getData('#registerBox');
     console.log(postData);
     $.ajax({
         type: 'POST',
         async: false,
-        url: "/user/register/",
+        url: "/www/user/register/",
         data: postData,
         dataType: 'json',
         success: function(data) {
             if (data['success']) {
-                $('#regBox').hide();
+                alert('Регистрация прошла успешно');
+                $('#registerBox').hide();
+                $('#userLink').attr('href', '/user/');
+                $('#userLink').html(data['userName']);
                 $('#userBox').show();
-                $('#userName').html(data['userName']);
+
             }
             alert(data['message']);
         }
@@ -358,17 +379,6 @@ function intToStr(ival) {
     return s;
 }
 
-function strToInt(sval) {
-    return Number(sval.replace(/,/g, ""));
-}
 
-function getData(form) {
-    var data = {};
-    $('input, textarea, select', form).each(function() {
-        if (this.name && this.name != '') {
-            data[this.name] = this.value;
-            console.log('data[' + this.name + '] = ' + data[this.name]);
-        }
-    });
-    return data;}
+
     */

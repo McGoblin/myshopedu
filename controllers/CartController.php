@@ -3,7 +3,7 @@
  * Контроллер для управлеия корзиной покупателя
  *
  */
-
+include_once "../library/mainFunction.php";
 include_once "../models/ProductsModel.php";
 include_once "../models/CategoriesModel.php";
 
@@ -61,12 +61,12 @@ function indexAction($smarty) {
     $itemsIds = isset($_SESSION['cart'])?$_SESSION['cart']:array();
     $rsCategories = getAllMainCatsWithChildren();
     $rsProducts = getProductsFromArray($itemsIds);
-    d($rsProducts);
+    //d($rsProducts);
     $smarty->assign('pageTitle', 'Корзина');
     $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('rsProducts', $rsProducts);
 
-    loadTemplate($smarty, 'header');
-    loadTemplate($smarty, 'cart');
-    loadTemplate($smarty, 'footer');
+    loadTemlate($smarty, 'header');
+    loadTemlate($smarty, 'cart');
+    loadTemlate($smarty, 'footer');
 }

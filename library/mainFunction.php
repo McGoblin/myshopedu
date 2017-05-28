@@ -45,5 +45,5 @@ function createSmartyRsArray ($res){
 }
 
 function stringToSQL($param){
-    return htmlspecialchars(mysqli_escape_string($param));
+    return htmlspecialchars(mysqli_escape_string(dbConnect(),$param));
 }

@@ -38,7 +38,7 @@
           <td style="padding-left: 10px;">
             <style1>
               <a id="addtocart_{$rsProduct[0]['id']}" href="" onclick="addtocart({$rsProduct[0]['id']}); return false;" alt="Добавить в корзину">Восстановить</a>
-              <a id="removecart_{$rsProduct[0]['id']}" href="" onclick="remfromcart({$rsProduct[0]['id']}); return false;" alt="Удалить из корзину">Удалить </a>
+              <a class="hideme" id="removecart_{$rsProduct[0]['id']}" href="" onclick="remfromcart({$rsProduct[0]['id']}); return false;" alt="Удалить из корзину">Удалить </a>
             </style1>
           </td>
         </tr>

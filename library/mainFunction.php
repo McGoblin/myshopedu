@@ -47,3 +47,8 @@ function createSmartyRsArray ($res){
 function stringToSQL($param){
     return htmlspecialchars(mysqli_escape_string(dbConnect(),$param));
 }
+function redirect ($url){
+    if (!$url) $url= '/';
+    header("Location: {$url}");
+    exit;
+}

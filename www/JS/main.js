@@ -103,7 +103,53 @@ function registerNewUser() {
         }
     });
 }
+/**
+ * выход из профиля
+ * @param redirPath
+ */
+function logout(redirPath) {
+    $.ajax({
+        url: "/www/user/logout/"
+    });
+    if (redirPath) {
+        console.log(redirPath);
+        document.location.href = redirPath;
+    } else {
+        $('#userBox').hide();
+        $('#regBox').show();
+        $('#userName').html('');
+    }
+}
+/**
+ * авторизация
+ * @param redirPath
+ */
+function login() {
+    var email = $('#loginEmail').val();
+    var pwd = $('#loginPwd').val();
 
+    var postData = "email="+email+"&pwd="+pwd;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/www/user/login/",
+        data: postData,
+        dataType: 'json',
+        success: function(data) {
+            if (data['success']) {
+
+                $('#registerBox').hide();
+                $('#loginBox').hide();
+                $('#userLink').attr('href', '/user/');
+                $('#userLink').html(data['displayName']);
+                $('#userBox').show();
+
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+}
 
 
 /*
@@ -164,48 +210,8 @@ function chNum(itemId) {
 
 
 
-function login(redirPath) {
-    var postData = {};
-    postData["email"] = $('#email').val();
-    postData["pass"]  = $('#pass').val();
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: "/user/login/",
-        data: postData,
-        dataType: 'json',
-        success: function(data) {
-            if (data['success']) {
-                if (redirPath) {
-                    console.log(redirPath);
-                    document.location.href = redirPath;
-                } else {
-                    $('#regBox').hide();
-                    $('#userBox').show();
-                    $('#userName').html(data['userName']);
-                    $('#email').val('');
-                    $('#pass').val('');
-                }
-            } else {
-                alert(data['message']);
-            }
-        }
-    });
-}
 
-function logout(redirPath) {
-    $.ajax({
-        url: "/user/logout/"
-    });
-    if (redirPath) {
-        console.log(redirPath);
-        document.location.href = redirPath;
-    } else {
-        $('#userBox').hide();
-        $('#regBox').show();
-        $('#userName').html('');
-    }
-}
+
 
 function save() {
     var postData = {};

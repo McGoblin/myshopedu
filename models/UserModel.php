@@ -74,3 +74,15 @@ function checkUserEmail($email){
     return createSmartyRsArray($res);
 }
 
+function loginUser($email, $pwd){
+
+    $hash = md5($pwd);
+    $email = stringToSQL($email);
+    $sql = "SELECT * FROM `user` WHERE (`email` = '{$email}' AND `pwd` = '{$hash}');";
+
+    $res = mysqli_query(dbConnect(),$sql);
+    $res = createSmartyRsArray($res);
+    $res['success'] = isset($res[0])?$res['success'] = 1:$res['success'] = 0;
+
+    return $res;
+}

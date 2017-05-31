@@ -115,7 +115,7 @@ function updateAction () {
     $curPwd=isset($_REQUEST['curPwd'])?$_REQUEST['curPwd']:null;
 
     $curPwdMD5 = md5($curPwd);
-    if(!$curPwd||($_SESSION['user']['pwd']) != $curPwdMD5){
+    if(!$curPwd|| ($_SESSION['user']['pwd']) != $curPwdMD5){
         $resData['success']=0;
         $resData{'message'}="Не верный пароль";
         echo json_encode($resData);
@@ -131,7 +131,13 @@ function updateAction () {
         $_SESSION['user']['name'] = $name;
         $_SESSION['user']['phone'] = $phone;
         $_SESSION['user']['adress'] = $adress;
-        $_SESSION['user']['pwd'] = $curPwdMD5;
+
+        $newPwd = $_SESSION['user']['pwd'];
+        if ($pwd1 && ($pwd1==$pwd2)){
+            $newPwd = trim($pwd1);
+        }
+
+        $_SESSION['user']['pwd'] = $newPwd;
         $_SESSION['user']['displayName'] = $name?$name:$_SESSION['user']['email'];
 
     }else{

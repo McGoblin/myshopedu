@@ -103,11 +103,11 @@ function updateUserData ($name, $phone, $adress, $pwd1, $pwd2, $curPwd){
 
     $sql = "UPDATE `user` SET ";
     if ($newPwd){
-        $sql = "`pwd` = '{$newPwd}', ";
+        $sql .= "`pwd` = '{$newPwd}', ";
     }
 
-    $sql = "
-    `name` = '{$newPwd}',
+    $sql .= "
+    `name` = '{$name}',
     `phone` = '{$phone}',
     `adress` = '{$adress}'
     WHERE 

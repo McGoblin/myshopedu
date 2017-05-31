@@ -87,3 +87,16 @@ function loginAction(){
     echo json_encode($resData);
 }
 
+function indexAction (){
+    if (!isset($_SESSION['user'])){
+        redirect('/');
+    }
+
+    $rsCategories = getAllMainCatsWithChildren();
+    $smarty->assign('pageTitle', "Старинца пользователя");
+    $smarye->assign('rsCategories', $rsCategories);
+
+    loadTemlate($smarty, 'header');
+    loadTemlate($smarty, 'user');
+    loadTemlate($smarty, 'footer');
+}

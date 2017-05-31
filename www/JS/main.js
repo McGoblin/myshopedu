@@ -153,28 +153,27 @@ function login() {
 
 function saveUserData() {
     var postData = {};
-    postData["name"]      = $('#name').val();
-    postData["phone"]     = $('#phone').val();
-    postData["postindex"] = $('#postindex').val();
-    postData["city"]      = $('#city').val();
-    postData["address"]   = $('#address').val();
-    postData["pass"]      = $('#pass').val();
-    postData["newpass"]   = $('#newpass').val();
-    postData["pass2"]     = $('#pass2').val();
+    postData["name"]     = $('#newName').val();
+    postData["phone"]    = $('#newPhone').val();
+    postData["adress"]   = $('#newAdress').val();
+    postData["pwd1"]      = $('#newPwd').val();
+    postData["pwd2"]     = $('#newPwd2').val();
+    postData["curPwd"]      = $('#curPwd').val();
     $.ajax({
         type: 'POST',
         async: false,
-        url: "/user/save/",
+        url: "/www/user/update/",
         data: postData,
         dataType: 'json',
         success: function(data) {
             if (data['success']) {
-                $('#userName').html(data['userName']);
+                $('#userLink').html(data['userName']);
+                alert(data['message']);
+            } else {
+                alert(data['message']);
             }
-            alert(data['message']);
         }
     });
-    document.location.href = "/";
 }
 
 /*

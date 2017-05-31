@@ -2,16 +2,16 @@
 
     <tr>
         <td width="30%">
-            <style1>Логин (e-mail)</style1>
+            Логин (e-mail)
         </td>
         <td>
-            <style1>{$arUser['email']}</style1>
+            {$arUser['email']}
         </td>
     </tr>
 
     <tr>
         <td>
-            <style1>ФИО</style1>
+            ФИО
         </td>
         <td>
             <input id="newName" size="30" type="text"
@@ -35,7 +35,7 @@
         </td>
         <td>
             <input id="newAdress" size="30" type="text"
-                   value="{$arUser['address']}" style="text-align: left;" />
+                   value="{$arUser['adress']}" style="text-align: left;" />
         </td>
     </tr>
 

@@ -135,6 +135,7 @@ function updateAction () {
         $newPwd = $_SESSION['user']['pwd'];
         if ($pwd1 && ($pwd1==$pwd2)){
             $newPwd = trim($pwd1);
+            $newPwd = md5($newPwd);
         }
 
         $_SESSION['user']['pwd'] = $newPwd;

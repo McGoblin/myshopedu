@@ -140,7 +140,7 @@ function login() {
 
                 $('#registerBox').hide();
                 $('#loginBox').hide();
-                $('#userLink').attr('href', '/user/');
+                $('#userLink').attr('href', '/www/user/');
                 $('#userLink').html(data['displayName']);
                 $('#userBox').show();
 
@@ -151,6 +151,31 @@ function login() {
     });
 }
 
+function saveUserData() {
+    var postData = {};
+    postData["name"]      = $('#name').val();
+    postData["phone"]     = $('#phone').val();
+    postData["postindex"] = $('#postindex').val();
+    postData["city"]      = $('#city').val();
+    postData["address"]   = $('#address').val();
+    postData["pass"]      = $('#pass').val();
+    postData["newpass"]   = $('#newpass').val();
+    postData["pass2"]     = $('#pass2').val();
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/user/save/",
+        data: postData,
+        dataType: 'json',
+        success: function(data) {
+            if (data['success']) {
+                $('#userName').html(data['userName']);
+            }
+            alert(data['message']);
+        }
+    });
+    document.location.href = "/";
+}
 
 /*
 function movToCart(itemId, itemNum) {
@@ -213,31 +238,7 @@ function chNum(itemId) {
 
 
 
-function save() {
-    var postData = {};
-    postData["name"]      = $('#name').val();
-    postData["phone"]     = $('#phone').val();
-    postData["postindex"] = $('#postindex').val();
-    postData["city"]      = $('#city').val();
-    postData["address"]   = $('#address').val();
-    postData["pass"]      = $('#pass').val();
-    postData["newpass"]   = $('#newpass').val();
-    postData["pass2"]     = $('#pass2').val();
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: "/user/save/",
-        data: postData,
-        dataType: 'json',
-        success: function(data) {
-            if (data['success']) {
-                $('#userName').html(data['userName']);
-            }
-            alert(data['message']);
-        }
-    });
-    document.location.href = "/";
-}
+
 
 function buy() {
     var postData = getData('form');
